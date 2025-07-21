@@ -1,0 +1,34 @@
+/* Make the custom header fixed at the top */
+header.star-restaurant-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+
+    /* Gradient background from semi-transparent brown to transparent */
+    background: linear-gradient(to bottom, rgba(36, 35, 35, 0.9), rgba(121, 62, 39, 0));
+    color: #fff;
+    /* Add a slight backdrop blur for nicer effect (optional) */
+    backdrop-filter: saturate(180%) blur(10px);
+}
+
+/* Push the page content down to avoid being hidden behind fixed header */
+body {
+    padding-top: 55px;
+}
+
+/* Logo size */
+header.star-restaurant-header .navbar-brand img {
+    height: 30px;
+}
+
+/* Navigation links color */
+header.star-restaurant-header a {
+    color: #fff;
+}
+
+/* Navigation links hover */
+header.star-restaurant-header a:hover {
+    color: #ffd700;
+    text-decoration: none;
+}
