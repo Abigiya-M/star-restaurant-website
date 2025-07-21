@@ -1,0 +1,56 @@
+<odoo>
+  <!-- Menu Page -->
+  <template id="menu_page" name="Menu">
+    <t t-call="website.layout">
+      <div class="container py-5">
+        <h1 class="text-center mb-5">Our Menu</h1>
+
+        <t t-foreach="categories" t-as="category">
+          <div class="menu-category mb-5">
+          <h2>
+            <span class="badge bg-primary fs-5">
+              <t t-esc="category.name"/>
+            </span>
+          </h2>
+  <h2 class="text-secondary border-bottom pb-2 mb-4">
+              <t t-esc="category.name"/>
+            </h2>
+
+            <div class="row">
+              <t t-foreach="category.menu_item_ids" t-as="item">
+                <div class="col-md-4 mb-4">
+                  <div class="card h-100 shadow-sm">
+                    <img
+                      t-if="item.image"
+                      t-att-src="'data:image/jpeg;base64,%s' % item.image"
+                      alt="Menu Item Image"
+                      class="card-img-top"
+                      style="height: 200px; object-fit: cover;"
+                    />
+                    <img
+                      t-if="not item.image"
+                      src="/web/static/src/img/placeholder.png"
+                      alt="No Image"
+                      class="card-img-top"
+                      style="height: 200px; object-fit: cover;"
+                    />
+                    <div class="card-body d-flex flex-column">
+                      <h5 class="card-title"><t t-esc="item.name"/></h5>
+                      <p class="card-text flex-grow-1">
+                        <t t-esc="item.description"/>
+                      </p>
+                      <p class="price text-primary fw-bold">
+                        $<t t-esc="item.price"/>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </t>
+            </div>
+          </div>
+        </t>
+
+      </div>
+    </t>
+  </template>
+</odoo>

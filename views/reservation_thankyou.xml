@@ -1,0 +1,12 @@
+<odoo>
+ <!-- Reservation Thank You Page -->
+    <template id="reservation_thank_you" name="Reservation Thank You">
+        <t t-call="website.layout">
+            <div class="container py-5 text-center">
+                <h1>Thank You!</h1>
+                <p>Your reservation has been received. We look forward to serving you!</p>
+                <a href="/homepage" class="btn btn-primary mt-3">Back to Home</a>
+            </div>
+        </t>
+    </template>
+</odoo>

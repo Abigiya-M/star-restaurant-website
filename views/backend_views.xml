@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    <!-- Tree View -->
+    <record id="view_reservation_tree" model="ir.ui.view">
+        <field name="name">restaurant.reservation.tree</field>
+        <field name="model">restaurant.reservation</field>
+        <field name="arch" type="xml">
+            <tree string="Reservations">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="time"/>
+                <field name="number_of_people"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="table_id"/> <!-- 🆕 Added -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_reservation_form" model="ir.ui.view">
+        <field name="name">restaurant.reservation.form</field>
+        <field name="model">restaurant.reservation</field>
+        <field name="arch" type="xml">
+            <form string="Reservation">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="time"/>
+                        <field name="number_of_people"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="note"/>
+                        <field name="table_id"/> <!-- 🆕 Added -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open reservations -->
+    <record id="action_reservation" model="ir.actions.act_window">
+        <field name="name">Reservations</field>
+        <field name="res_model">restaurant.reservation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new reservation.
+            </p>
+        </field>
+    </record>
+
+    <!-- Main menu -->
+    <menuitem id="menu_restaurant_root" name="Restaurant"/>
+
+    <!-- Reservations menu under Restaurant -->
+    <menuitem id="menu_reservations" name="Reservations" parent="menu_restaurant_root" action="action_reservation"/>
+
+</data>
+</odoo>

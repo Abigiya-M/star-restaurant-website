@@ -1,0 +1,239 @@
+<odoo>
+  <template id="homepage" name="Landing Page">
+    <t t-call="website.layout">
+      <style>
+        .section-title {
+          font-size: 2.8rem;
+          font-weight: 700;
+          text-align: center;
+          margin-bottom: 40px;
+          color: #007bff;
+        }
+
+        .btn-primary-custom {
+          background: linear-gradient(45deg, #007bff, #00aaff);
+          color: white;
+          padding: 12px 30px;
+          border-radius: 50px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+          background: linear-gradient(45deg, #0056b3, #007bff);
+          transform: scale(1.05);
+        }
+
+        /* Welcome Section */
+        .landing-welcome {
+          min-height: 50vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          text-align: center;
+          padding: 40px 20px;
+        }
+
+        .landing-welcome h1 {
+          font-size: 3.5rem;
+          font-weight: 700;
+          color: #007bff;
+          animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .landing-welcome p {
+          font-size: 1.5rem;
+          margin-top: 20px;
+          margin-bottom: 30px;
+          color: #333;
+        }
+
+        @keyframes glow {
+          from { text-shadow: 0 0 10px #007bff; }
+          to { text-shadow: 0 0 20px #00aaff; }
+        }
+
+        /* Slider Section */
+        .slider-section {
+          display: flex;
+          justify-content: center;
+          padding: 40px 20px;
+          background: #f0f0f0;
+        }
+
+        .slider-wrapper {
+          position: relative;
+          width: 100%;
+          max-width: 1000px;
+          height: 400px;
+          overflow: hidden;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .slide {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          opacity: 0;
+          animation: slideAnimation 12s infinite;
+        }
+
+        .slide:nth-child(1) {
+          background-image: url('/star_Restaurant/static/src/img/landing_bg.jpeg');
+          animation-delay: 0s;
+        }
+
+        .slide:nth-child(2) {
+          background-image: url('/star_Restaurant/static/src/img/landing_bg3.jpeg');
+          animation-delay: 4s;
+        }
+
+        .slide:nth-child(3) {
+          background-image: url('/star_Restaurant/static/src/img/landing_bg2.jpeg');
+          animation-delay: 8s;
+        }
+
+        @keyframes slideAnimation {
+          0% {opacity:0;}
+          8% {opacity:1;}
+          25% {opacity:1;}
+          33% {opacity:0;}
+          100% {opacity:0;}
+        }
+
+        .slide-caption {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(0, 0, 0, 0.5);
+          color: #fff;
+          padding: 8px 20px;
+          border-radius: 5px;
+          font-size: 1.2rem;
+        }
+
+        /* Featured and About Us Sections */
+        .featured-section, .about-section {
+          padding: 60px 20px;
+        }
+
+        .featured-cards, .about-content {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .featured-card, .about-text, .about-image {
+          background: white;
+          border-radius: 10px;
+          overflow: hidden;
+          max-width: 300px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.1);
+          text-align: center;
+          padding: 15px;
+        }
+
+        .featured-card img, .about-image img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+
+        .featured-card-body h3 {
+          font-size: 1.3rem;
+          margin-bottom: 10px;
+          color: #007bff;
+        }
+
+        .cta-section {
+          padding: 60px 20px;
+          text-align: center;
+          background: linear-gradient(45deg, #007bff, #00aaff);
+          color: white;
+        }
+
+        .cta-section h2 {
+          font-size: 2.2rem;
+          margin-bottom: 20px;
+        }
+      </style>
+
+      <!-- Welcome -->
+      <section class="landing-welcome">
+        <h1>Welcome to Star Restaurant</h1>
+        <p>Where Taste Meets Elegance</p>
+        <a href="/reservation_page" class="btn-primary-custom">Book a Table</a>
+      </section>
+
+      <!-- Animated Slider -->
+      <section class="slider-section">
+        <div class="slider-wrapper">
+          <div class="slide">
+            <div class="slide-caption">Outside Terrace</div>
+          </div>
+          <div class="slide">
+            <div class="slide-caption">Inner Dining Room</div>
+          </div>
+          <div class="slide">
+            <div class="slide-caption">Bar Area</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Dishes -->
+      <section class="featured-section">
+        <h2 class="section-title">⭐ Featured Dishes</h2>
+        <div class="featured-cards">
+          <div class="featured-card">
+            <img src="/star_Restaurant/static/src/img/Grilled_salmon.jpeg" alt="Dish 1"/>
+            <div class="featured-card-body">
+              <h3>Grilled Salmon</h3>
+              <p>Fresh Atlantic salmon grilled to perfection.</p>
+            </div>
+          </div>
+          <div class="featured-card">
+            <img src="/star_Restaurant/static/src/img/Vegan_Delight.jpeg" alt="Dish 2"/>
+            <div class="featured-card-body">
+              <h3>Vegan Delight</h3>
+              <p>A colorful bowl of seasonal veggies &amp; grains.</p>
+            </div>
+          </div>
+          <div class="featured-card">
+            <img src="/star_Restaurant/static/src/img/Classic_steak.jpeg" alt="Dish 3"/>
+            <div class="featured-card-body">
+              <h3>Classic Steak</h3>
+              <p>Premium cut beef steak with sides.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us -->
+      <section class="about-section">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>At Star Restaurant, we blend tradition with innovation to bring you an unforgettable dining experience. Our expert chefs craft every dish with fresh ingredients and a passion for excellence. Whether you’re here for a casual meal or a special occasion, we make every moment count.</p>
+          </div>
+          <div class="about-image">
+            <img src="/star_Restaurant/static/src/img/about_us.jpeg" alt="About Us"/>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="cta-section">
+        <h2>Ready to Experience the Star Difference?</h2>
+        <a href="/reservation_page" class="btn-primary-custom">Reserve Your Table Now</a>
+      </section>
+
+    </t>
+  </template>
+</odoo>

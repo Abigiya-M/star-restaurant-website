@@ -1,0 +1,238 @@
+<odoo>
+  <template id="homepage" name="Landing Page">
+    <t t-call="website.layout">
+      <style>
+        .section-title {
+          font-size: 2.8rem;
+          font-weight: 700;
+          text-align: center;
+          margin-bottom: 40px;
+          color: #007bff;
+        }
+
+        .btn-primary-custom {
+          background: linear-gradient(45deg, #007bff, #00aaff);
+          color: white;
+          padding: 12px 30px;
+          border-radius: 50px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+          background: linear-gradient(45deg, #0056b3, #007bff);
+          transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .landing-section {
+          min-height: 50vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          background: #fff;
+          color: #333;
+        }
+
+        .landing-welcome h1 {
+          font-size: 3rem;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .landing-welcome p {
+          font-size: 1.3rem;
+          color: #666;
+        }
+
+        /* Animated Slider */
+        .slider-section {
+          position: relative;
+          height: 400px;
+          overflow: hidden;
+        }
+
+        .slide {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          opacity: 0;
+          animation: slideAnimation 12s infinite;
+        }
+
+        .slide:nth-child(1) {
+          background-image: url('/star_Restaurant/static/src/img/landing_bg.jpeg');
+          animation-delay: 0s;
+        }
+
+        .slide:nth-child(2) {
+          background-image: url('/star_Restaurant/static/src/img/landing_bg3.jpeg');
+          animation-delay: 4s;
+        }
+
+        .slide:nth-child(3) {
+          background-image: url('/star_Restaurant/static/src/img/landing_bg2.jpeg');
+          animation-delay: 8s;
+        }
+
+        @keyframes slideAnimation {
+          0% {opacity:0;}
+          8% {opacity:1;}
+          25% {opacity:1;}
+          33% {opacity:0;}
+          100% {opacity:0;}
+        }
+
+        .slide-caption {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(0, 0, 0, 0.5);
+          color: #fff;
+          padding: 10px 20px;
+          border-radius: 5px;
+        }
+
+        /* Featured Dishes */
+        .featured-section {
+          padding: 60px 20px;
+          background: #f8f9fa;
+        }
+
+        .featured-cards {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .featured-card {
+          background: white;
+          border-radius: 10px;
+          overflow: hidden;
+          max-width: 300px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease;
+        }
+
+        .featured-card:hover {
+          transform: scale(1.05);
+        }
+
+        .featured-card img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+
+        .featured-card-body {
+          padding: 15px;
+          text-align: center;
+        }
+
+        .about-section {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          padding: 60px 20px;
+        }
+
+        .about-text {
+          flex: 1 1 400px;
+          padding: 20px;
+        }
+
+        .about-image {
+          flex: 1 1 400px;
+          padding: 20px;
+        }
+
+        .about-image img {
+          width: 100%;
+          border-radius: 10px;
+        }
+
+        .cta-section {
+          text-align: center;
+          padding: 60px 20px;
+          background: linear-gradient(45deg, #007bff, #00aaff);
+          color: #fff;
+        }
+      </style>
+
+      <!-- Welcome -->
+      <section class="landing-section">
+        <div class="landing-welcome">
+          <h1>Welcome to Star Restaurant</h1>
+          <p>Where Taste Meets Elegance</p>
+          <a href="/reservation_page" class="btn-primary-custom">Book a Table</a>
+        </div>
+      </section>
+
+      <!-- Animated Slider -->
+      <section class="slider-section">
+        <div class="slide">
+          <div class="slide-caption">Outside Terrace</div>
+        </div>
+        <div class="slide">
+          <div class="slide-caption">Inner Dining Room</div>
+        </div>
+        <div class="slide">
+          <div class="slide-caption">Bar Area</div>
+        </div>
+      </section>
+
+      <!-- Featured Dishes -->
+      <section class="featured-section">
+        <h2 class="section-title">⭐ Featured Dishes</h2>
+        <div class="featured-cards">
+          <div class="featured-card">
+            <img src="/star_Restaurant/static/src/img/Grilled_salmon.jpeg" alt="Dish 1"/>
+            <div class="featured-card-body">
+              <h3>Grilled Salmon</h3>
+              <p>Fresh Atlantic salmon grilled to perfection.</p>
+            </div>
+          </div>
+          <div class="featured-card">
+            <img src="/star_Restaurant/static/src/img/Vegan_Delight.jpeg" alt="Dish 2"/>
+            <div class="featured-card-body">
+              <h3>Vegan Delight</h3>
+              <p>A colorful bowl of seasonal veggies &amp; grains.</p>
+            </div>
+          </div>
+          <div class="featured-card">
+            <img src="/star_Restaurant/static/src/img/Classic_steak.jpeg" alt="Dish 3"/>
+            <div class="featured-card-body">
+              <h3>Classic Steak</h3>
+              <p>Premium cut beef steak with sides.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us -->
+      <section class="about-section">
+        <div class="about-text">
+          <h2 class="section-title">About Us</h2>
+          <p>At Star Restaurant, we blend tradition with innovation to bring you an unforgettable dining experience. Our expert chefs craft every dish with fresh ingredients and a passion for excellence. Whether you’re here for a casual meal or a special occasion, we make every moment count.</p>
+        </div>
+        <div class="about-image">
+          <img src="/star_Restaurant/static/src/img/about_us.jpeg" alt="About Us"/>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="cta-section">
+        <h2>Ready to Experience the Star Difference?</h2>
+        <a href="/reservation_page" class="btn-primary-custom">Reserve Your Table Now</a>
+      </section>
+
+    </t>
+  </template>
+</odoo>

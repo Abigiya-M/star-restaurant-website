@@ -1,0 +1,118 @@
+<odoo>
+  <template id="reservation_page" name="Reservation">
+    <t t-call="website.layout">
+      <style>
+        .reservation-hero {
+          position: relative;
+          min-height: 100vh;
+          background: url('/star_Restaurant/static/src/img/reservation.jpeg') center center / cover no-repeat fixed;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+        }
+
+        .overlay {
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 1;
+        }
+
+        .reservation-card {
+          position: relative;
+          z-index: 2;
+          background: #fff;
+          padding: 30px 40px;
+          border-radius: 15px;
+          max-width: 600px;
+          width: 90%;
+          text-align: center;
+          animation: fadeInUp 1.5s ease forwards, floatUpDown 4s ease-in-out infinite alternate;
+          opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatUpDown {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-10px); }
+        }
+
+        .reservation-card h1 {
+          font-size: 2.5rem;
+          margin-bottom: 20px;
+          color: #007bff;
+        }
+
+        .form-control {
+          margin-bottom: 15px;
+          border-radius: 8px;
+          padding: 12px 15px;
+          border: 1px solid #ccc;
+        }
+
+        .form-control:focus {
+          border-color: #007bff;
+          box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn-primary {
+          background-color: #007bff;
+          border: none;
+          padding: 12px;
+          font-size: 1.2rem;
+          border-radius: 8px;
+          width: 100%;
+        }
+
+        .btn-primary:hover {
+          background-color: #0056b3;
+        }
+
+        .alert {
+          margin-bottom: 15px;
+        }
+      </style>
+
+      <div class="reservation-hero">
+        <div class="overlay"></div>
+
+        <div class="reservation-card">
+          <h1>Make a Reservation</h1>
+
+          <t t-if="error_message">
+            <div class="alert alert-danger">
+              <t t-esc="error_message"/>
+            </div>
+          </t>
+
+          <form action="/reservation/submit" method="POST">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+            <input type="text" name="name" class="form-control" placeholder="Your Name" required="required"/>
+            <input type="email" name="email" class="form-control" placeholder="Email"/>
+            <input type="text" name="phone" class="form-control" placeholder="Phone"/>
+            <input type="date" name="date" class="form-control" required="required"/>
+            <input type="time" name="time" class="form-control" required="required"/>
+            <input type="number" name="number_of_people" class="form-control" placeholder="# People"/>
+
+            <select name="table_id" class="form-control" required="required">
+              <option value="">Select Table</option>
+              <t t-foreach="tables" t-as="table">
+                <option t-att-value="table.id"><t t-esc="table.name"/></option>
+              </t>
+            </select>
+
+            <textarea name="note" class="form-control" placeholder="Special Requests"></textarea>
+
+            <button type="submit" class="btn btn-primary">Book Now</button>
+          </form>
+        </div>
+      </div>
+    </t>
+  </template>
+</odoo>
